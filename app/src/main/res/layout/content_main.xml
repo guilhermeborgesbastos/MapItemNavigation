@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="guilherme.com.br.mapitemnavigation.MainActivity"
+    tools:showIn="@layout/activity_main"
+    android:orientation="vertical">
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:elevation="5dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/listBackground"
+        android:elevation="5dp"/>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/reclist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/listBackground" />
+
+
+</LinearLayout>
