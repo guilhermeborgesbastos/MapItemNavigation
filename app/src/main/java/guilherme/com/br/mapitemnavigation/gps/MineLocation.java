@@ -10,9 +10,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Created by guilh on 13/02/2016.
+ * Created by guilh on 13/02/2015.
  */
-public class MyLocation {
+public class MineLocation {
 
     Timer timer1;
     LocationManager lm;
@@ -22,7 +22,7 @@ public class MyLocation {
 
     public boolean getLocation(Context context, LocationResult result)
     {
-        //I use LocationResult callback class to pass location value from MyLocation to user code.
+        //I use LocationResult callback class to pass location value from MineLocation to user code.
         locationResult=result;
         if(lm==null)
             lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);

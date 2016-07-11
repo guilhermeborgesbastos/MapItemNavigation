@@ -11,8 +11,8 @@ public class Application extends android.app.Application {
     public static String storagePath = "https://meucomercioeletronico.com/tutorial/images";
 
     //set Language  / Aplica a língua
-    public static String language = "pt_br";
-    //public static String language = "en";
+    //public static String language = "pt_br";
+    public static String language = "en";
 
     // lista de categorias das lojas
     // category store list

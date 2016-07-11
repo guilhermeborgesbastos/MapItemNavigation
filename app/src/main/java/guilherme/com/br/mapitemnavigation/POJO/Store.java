@@ -1,6 +1,6 @@
 package guilherme.com.br.mapitemnavigation.POJO;
 
-public class Loja {
+public class Store {
 
     private String razao_social;
     private String nome_fantasia;
@@ -9,7 +9,7 @@ public class Loja {
     private Float longitude;
     private String logo;
 
-    public Loja() {
+    public Store() {
     }
 
     public String getRazao_social() {

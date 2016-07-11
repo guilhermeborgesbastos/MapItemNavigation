@@ -13,30 +13,28 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
 
-import guilherme.com.br.mapitemnavigation.Application;
 import guilherme.com.br.mapitemnavigation.MainActivity;
-import guilherme.com.br.mapitemnavigation.POJO.Filial;
+import guilherme.com.br.mapitemnavigation.POJO.Branche;
 import guilherme.com.br.mapitemnavigation.R;
 
 /**
- * Created by guilh on 02/03/2016.
+ * Created by guilh on 02/07/2015.
  */
 public class FilialListAdapter extends RecyclerView.Adapter<FilialListAdapter.ViewHolderFilial> {
 
     private Context mContext;
     private MainActivity mActivity;
 
-    private List<Filial> recordSet;
+    private List<Branche> recordSet;
 
 
     /***********************************************************************************************
      Constructor
      ***********************************************************************************************/
 
-    public FilialListAdapter(List<Filial> _recordSet, MainActivity _activity){
+    public FilialListAdapter(List<Branche> _recordSet, MainActivity _activity){
         mContext = _activity.getBaseContext();
         mActivity = _activity;
         recordSet = _recordSet;
@@ -57,7 +55,7 @@ public class FilialListAdapter extends RecyclerView.Adapter<FilialListAdapter.Vi
     public void onBindViewHolder(ViewHolderFilial holder, final int position) {
         _holder = holder;
         ViewHolderFilial filialViewHolder = (ViewHolderFilial) holder;
-        filialViewHolder.setData((Filial) recordSet.get(position));
+        filialViewHolder.setData((Branche) recordSet.get(position));
         //filialViewHolder.setCurrentLat(recordSet.get(position).getLatitude());
         //filialViewHolder.setCurrentLat(recordSet.get(position).getLongitude());
     }
@@ -85,7 +83,7 @@ public class FilialListAdapter extends RecyclerView.Adapter<FilialListAdapter.Vi
         private TextView mTexto1;
         private TextView mTexto2;
         private ImageView addressButton;
-        public Filial filial;
+        public Branche branche;
         public RatingBar ratingBar;
 
         public ViewHolderFilial(View v) {
@@ -118,24 +116,24 @@ public class FilialListAdapter extends RecyclerView.Adapter<FilialListAdapter.Vi
             return new Float(dist).floatValue();
         }
 
-        public void setData(Filial _filial) {
-            filial = _filial;
+        public void setData(Branche _branche) {
+            branche = _branche;
 
-            if(filial.getLoja().getLogo() != null) {
-                Uri uri = Uri.parse(filial.getLoja().getLogo());
+            if(branche.getStore().getLogo() != null) {
+                Uri uri = Uri.parse(branche.getStore().getLogo());
                 Picasso.with(mActivity).load(uri).into(this.mLogo);
             }
 
-            this.mTitulo.setText(filial.getLoja().getNome_fantasia());
+            this.mTitulo.setText(branche.getStore().getNome_fantasia());
 
-            this.mTexto1.setText(filial.getUnidade());
+            this.mTexto1.setText(branche.getUnidade());
             this.mTitulo.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 
-            double lat1 = filial.getLoja().getLatitude();
-            double lng1 = filial.getLoja().getLongitude();
+            double lat1 = branche.getStore().getLatitude();
+            double lng1 = branche.getStore().getLongitude();
 
-            double lat2 = filial.getLatitude();
-            double lng2 = filial.getLongitude();
+            double lat2 = branche.getLatitude();
+            double lng2 = branche.getLongitude();
 
             String distancia = new DecimalFormat("#.##").format(GetDistanceFromCurrentPosition(lat1, lng1, lat2, lng2));
 
@@ -147,7 +145,7 @@ public class FilialListAdapter extends RecyclerView.Adapter<FilialListAdapter.Vi
 
 
         public void onClick(View v){
-                mActivity.expandMap(filial);
+                mActivity.expandMap(branche);
         }
 
     }

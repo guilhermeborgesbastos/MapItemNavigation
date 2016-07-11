@@ -8,8 +8,7 @@
         android:id="@+id/logo"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/logo_starbucks"/>
+        android:layout_gravity="center_horizontal"/>
 
     <TextView
         android:id="@+id/title"

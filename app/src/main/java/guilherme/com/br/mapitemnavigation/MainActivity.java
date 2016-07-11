@@ -40,8 +40,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import guilherme.com.br.mapitemnavigation.POJO.Filial;
-import guilherme.com.br.mapitemnavigation.POJO.Loja;
+import guilherme.com.br.mapitemnavigation.POJO.Branche;
+import guilherme.com.br.mapitemnavigation.POJO.Store;
 import guilherme.com.br.mapitemnavigation.ViewHolder.FilialListAdapter;
 
 /*
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements
 
     private static final int MY_PERMISSION_LOCATION = 10;
     public RecyclerView mRecyclerView;
-    private List<Filial> mfiliais;
+    private List<Branche> mfiliais;
     private Boolean mapReady;
     private GoogleMap GMap;
     private static final String TAG = "MainActivity";
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
-    private void loadValuesFrag( List<Filial> _defaultList ) {
+    private void loadValuesFrag( List<Branche> _defaultList ) {
 
         //adaptador da lista
         FilialListAdapter ca = new FilialListAdapter(_defaultList, MainActivity.this);
@@ -234,21 +234,21 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
-    private List<Filial> filiais;
+    private List<Branche> filiais;
 
     private void createData() {
 
         Double latitude = mCurrentLocation.getLatitude();
         Double longitude = mCurrentLocation.getLongitude();
 
-        //atualiza-se o LatLng para que o ViewHolderFilial possa fazer o calculo de distâncias para cada filial
+        //atualiza-se o LatLng para que o ViewHolderFilial possa fazer o calculo de distâncias para cada branche
         //setLatitude(latitude);
         //setLongitude(longitude);
 
         // Aqui montamos as Lojas ( Hardcoded )
         // here create the stores
         /* ### STORE 1 ### */
-        Loja store1 = new Loja();
+        Store store1 = new Store();
         store1.setCategoria(Application.category1);
 
         // get current location and plus Float value to be showed dinamic on map
@@ -264,7 +264,7 @@ public class MainActivity extends AppCompatActivity implements
 
 
         /* ### STORE 2 ### */
-        Loja store2 = new Loja();
+        Store store2 = new Store();
         store2.setCategoria(Application.category2);
         // get current location and plus Float value to be showed dinamic on map
         // pega a localizaçao do usuário e adiciona um Float para ser mostrado dinamicamente no mapa
@@ -279,7 +279,7 @@ public class MainActivity extends AppCompatActivity implements
 
 
         /* ### STORE 3 ### */
-        Loja store3 = new Loja();
+        Store store3 = new Store();
         store3.setCategoria(Application.category3);
         // get current location and plus Float value to be showed dinamic on map
         // pega a localizaçao do usuário e adiciona um Float para ser mostrado dinamicamente no mapa
@@ -297,7 +297,7 @@ public class MainActivity extends AppCompatActivity implements
         // Aqui montamos as filiais ( Hardcoded )
         // here create the branches
         /* ### BRANCHE 1 ### */
-        Filial branches1 = new Filial();
+        Branche branches1 = new Branche();
         branches1.setId(1);
         branches1.setUnidade(Application.unity + " " + Application.downTown);
                 branches1.setCep("06542-955");
@@ -307,12 +307,12 @@ public class MainActivity extends AppCompatActivity implements
         branches1.setEndereco("Av Brasília");
         branches1.setCidade("Sao Paulo");
         branches1.setEstado("SP");
-        branches1.setLoja(store1);
+        branches1.setStore(store1);
         branches1.setLatitude((float) (latitude - 0.0031));
         branches1.setLongitude((float) (longitude + 0.0019));
 
         /* ### BRANCHE 2 ### */
-        Filial branches2 = new Filial();
+        Branche branches2 = new Branche();
         branches2.setId(2);
         branches2.setUnidade(Application.unity + " " + Application.downTown + "2");
         branches2.setCep("28942-955");
@@ -322,14 +322,14 @@ public class MainActivity extends AppCompatActivity implements
         branches2.setEndereco("Av Paulo Santo Jr.");
         branches2.setCidade("Sao Paulo");
         branches2.setEstado("SP");
-        branches2.setLoja(store2);
+        branches2.setStore(store2);
         branches2.setLatitude((float) (latitude + 0.0043));
         branches2.setLongitude((float) (longitude - 0.0035));
 
 
 
         /* ### BRANCHE 5 ### */
-        Filial branches5 = new Filial();
+        Branche branches5 = new Branche();
         branches5.setId(5);
         branches5.setUnidade(Application.unity + " " + Application.downTown + "5");
         branches5.setCep("58945-955");
@@ -339,12 +339,12 @@ public class MainActivity extends AppCompatActivity implements
         branches5.setEndereco("Av Pedro Paulo");
         branches5.setCidade("Sao Paulo");
         branches5.setEstado("SP");
-        branches5.setLoja(store2);
+        branches5.setStore(store2);
         branches5.setLatitude((float) (latitude - 0.0043));
         branches5.setLongitude((float) (longitude - 0.0035));
 
         /* ### BRANCHE 3 ### */
-        Filial branches3 = new Filial();
+        Branche branches3 = new Branche();
         branches3.setId(3);
         branches3.setUnidade(Application.unity + " " + Application.downTown + "3");
         branches3.setCep("38943-955");
@@ -354,12 +354,12 @@ public class MainActivity extends AppCompatActivity implements
         branches3.setEndereco("Av Guilherme B. Bastos");
         branches3.setCidade("Sao Paulo");
         branches3.setEstado("SP");
-        branches3.setLoja(store3);
+        branches3.setStore(store3);
         branches3.setLatitude((float) (latitude - 0.0024));
         branches3.setLongitude((float) (longitude + 0.0056));
 
         /* ### BRANCHE 4 ### */
-        Filial branches4 = new Filial();
+        Branche branches4 = new Branche();
         branches4.setId(4);
         branches4.setUnidade(Application.unity + " " + Application.downTown + "4");
         branches4.setCep("58789-955");
@@ -369,11 +369,11 @@ public class MainActivity extends AppCompatActivity implements
         branches4.setEndereco("Av Rafael Bastos");
         branches4.setCidade("Sao Paulo");
         branches4.setEstado("SP");
-        branches4.setLoja(store3);
+        branches4.setStore(store3);
         branches4.setLatitude((float) (latitude - 0.0039));
         branches4.setLongitude((float) (longitude + 0.0070));
 
-        mfiliais = new ArrayList<Filial>();
+        mfiliais = new ArrayList<Branche>();
         mfiliais.add(branches1);
         mfiliais.add(branches2);
         mfiliais.add(branches5);
@@ -386,13 +386,13 @@ public class MainActivity extends AppCompatActivity implements
 
     private List<Marker> mMarkers;
 
-    public void createMarkers(List<Filial> filiais) {
+    public void createMarkers(List<Branche> filiais) {
 
         mMarkers = new ArrayList<Marker>();
 
         for (int i = 0; i < filiais.size(); i++) {
 
-            String nome_fantasia = filiais.get(i).getLoja().getNome_fantasia();
+            String nome_fantasia = filiais.get(i).getStore().getNome_fantasia();
             String unidade = filiais.get(i).getUnidade() + "|" + filiais.get(i).getId();
             Float latitude = filiais.get(i).getLatitude();
             Float longitude = filiais.get(i).getLongitude();
@@ -402,7 +402,7 @@ public class MainActivity extends AppCompatActivity implements
             markerOptions.position(marker);
             markerOptions.title(nome_fantasia);
             markerOptions.snippet(unidade);
-            BitmapDescriptor markerIcon = BitmapDescriptorFactory.fromResource(R.drawable.marker_green);
+            BitmapDescriptor markerIcon = BitmapDescriptorFactory.fromResource(R.drawable.marker);
             markerOptions.icon(markerIcon);
             Marker mMarker = GMap.addMarker(markerOptions);
             mMarkers.add(mMarker);
@@ -426,11 +426,11 @@ public class MainActivity extends AppCompatActivity implements
             _id = Integer.parseInt(itemInfo);
             if (_id == id) {
                 marker = mMarkers.get(i);
-                logoPath = mfiliais.get(i).getLoja().getLogo();
+                logoPath = mfiliais.get(i).getStore().getLogo();
             }
         }
 
-        Loja loja = null;
+        Store store = null;
 
         if (marker == null){
             //abrir modal de add amigo
@@ -438,7 +438,7 @@ public class MainActivity extends AppCompatActivity implements
             for (int i = 0; i < mfiliais.size(); i++) {
                 _id_loja = mfiliais.get(i).getId();
                 if (_id_loja == id) {
-                    loja = mfiliais.get(i).getLoja();
+                    store = mfiliais.get(i).getStore();
                 }
             }
 
@@ -451,7 +451,7 @@ public class MainActivity extends AppCompatActivity implements
         Double latitude = marker.getPosition().latitude;
         Double longitude = marker.getPosition().longitude;
 
-        //trace route usert -> filial
+        //trace route usert -> branche
         userLat = mCurrentLocation.getLatitude();
         userLong = mCurrentLocation.getLongitude();
 
@@ -459,7 +459,7 @@ public class MainActivity extends AppCompatActivity implements
         LatLng dest = new LatLng(latitude, longitude);
 
         // 0.002000 & 0.001200 to align the ballon
-        // 0.002000 & 0.001200 para alinhar o balao de info da loja
+        // 0.002000 & 0.001200 para alinhar o balao de info da store
         moveCamera(latitude  + 0.002, longitude + 0.0012);
 
     }
@@ -485,18 +485,18 @@ public class MainActivity extends AppCompatActivity implements
     }
     */
 
-    public void expandMap(Filial filial){
+    public void expandMap(Branche branche){
         //Open Intent Expand Map
-        Intent mapViewIntent = new Intent(MainActivity.this, ExpandedMapActivity.class);
-        mapViewIntent.putExtra("id_filial", filial.getId());
-        mapViewIntent.putExtra("latitude", filial.getLatitude());
-        mapViewIntent.putExtra("longitude", filial.getLongitude());
-        mapViewIntent.putExtra("logo", filial.getLoja().getLogo());
-        mapViewIntent.putExtra("unidade", filial.getUnidade());
-        mapViewIntent.putExtra("nome_fantasia", filial.getLoja().getNome_fantasia());
-        mapViewIntent.putExtra("endereco", filial.getEndereco() + ", " + filial.getNumero());
-        mapViewIntent.putExtra("telefone", filial.getTelefone());
-        mapViewIntent.putExtra("cep", filial.getCep());
+        Intent mapViewIntent = new Intent(MainActivity.this, OpenMapActivity.class);
+        mapViewIntent.putExtra("id_filial", branche.getId());
+        mapViewIntent.putExtra("latitude", branche.getLatitude());
+        mapViewIntent.putExtra("longitude", branche.getLongitude());
+        mapViewIntent.putExtra("logo", branche.getStore().getLogo());
+        mapViewIntent.putExtra("unidade", branche.getUnidade());
+        mapViewIntent.putExtra("nome_fantasia", branche.getStore().getNome_fantasia());
+        mapViewIntent.putExtra("endereco", branche.getEndereco() + ", " + branche.getNumero());
+        mapViewIntent.putExtra("telefone", branche.getTelefone());
+        mapViewIntent.putExtra("cep", branche.getCep());
 
         startActivity(mapViewIntent);
     }

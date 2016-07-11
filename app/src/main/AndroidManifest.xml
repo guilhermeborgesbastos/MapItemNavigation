@@ -18,12 +18,11 @@
         android:theme="@style/AppTheme">
 
         <!-- ========================= Google Maps Specific ===================================== -->
-        <!--Change Here Your APi Key em: -->
-        <!-- Mude aqui sua APi Key saiba mais em: -->
+        <!-- Change Here Your APi Key em: -->
         <!-- https://developers.google.com/maps/documentation/android-api/signup -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="YOUR_API_KEY_HERE" />
+            android:value="AIzaSyBHM3PpwsplZBhq3uRdYDwnsJcKyjJTZso" />
 
         <activity
             android:name=".MainActivity"
@@ -35,10 +34,10 @@
             </intent-filter>
         </activity>
 
-        <!-- ========================= ExpandedMapActivity Activities ===================================== -->
+        <!-- ========================= OpenMapActivity Activities ===================================== -->
 
         <activity
-            android:name=".ExpandedMapActivity"
+            android:name=".OpenMapActivity"
             android:label="ExpandedMapActivity"
             android:screenOrientation="portrait">
         </activity>

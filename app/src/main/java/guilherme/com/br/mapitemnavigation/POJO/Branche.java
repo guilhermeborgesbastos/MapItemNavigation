@@ -1,6 +1,6 @@
 package guilherme.com.br.mapitemnavigation.POJO;
 
-public class Filial {
+public class Branche {
     private int id;
     private String unidade;
     private String cep;
@@ -16,7 +16,7 @@ public class Filial {
     private Float longitude;
     private int status;
 
-    private Loja loja;
+    private Store store;
 
 
     public String getUnidade() {
@@ -83,12 +83,12 @@ public class Filial {
         this.longitude = longitude;
     }
 
-    public Loja getLoja() {
-        return loja;
+    public Store getStore() {
+        return store;
     }
 
-    public void setLoja(Loja loja) {
-        this.loja = loja;
+    public void setStore(Store store) {
+        this.store = store;
     }
 
     public String getTelefone() {

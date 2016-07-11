@@ -1,7 +1,6 @@
 package guilherme.com.br.mapitemnavigation;
 
 import android.Manifest;
-import android.app.ActionBar;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
@@ -10,10 +9,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -53,11 +50,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+
+import guilherme.com.br.mapitemnavigation.POJO.Branche;
 import guilherme.com.br.mapitemnavigation.gps.DirectionsJSONParser;
-import guilherme.com.br.mapitemnavigation.POJO.Filial;
 
 
-public class ExpandedMapActivity extends AppCompatActivity implements
+public class OpenMapActivity extends AppCompatActivity implements
         OnMapReadyCallback,
         LocationListener,
         GoogleApiClient.ConnectionCallbacks,
@@ -73,7 +71,7 @@ public class ExpandedMapActivity extends AppCompatActivity implements
     private static final String TELEFONE = "telefone";
     private static final String ENDERECO = "endereco";
     private static final String CEP = "cep";
-    private static final String TAG = "ExpandedMapActivity";
+    private static final String TAG = "OpenMapActivity";
     private int id_filial;
     public float latitude;
     public float longitude;
@@ -104,7 +102,7 @@ public class ExpandedMapActivity extends AppCompatActivity implements
         mapView = (MapView) findViewById(R.id.expanded_map);
 
         mapView.onCreate(savedInstanceState);
-        mapView.getMapAsync(ExpandedMapActivity.this);
+        mapView.getMapAsync(OpenMapActivity.this);
 
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
@@ -176,7 +174,7 @@ public class ExpandedMapActivity extends AppCompatActivity implements
     public void onMapReady(GoogleMap map) {
         GMap = map;
         mapReady = true;
-        if (ActivityCompat.checkSelfPermission(ExpandedMapActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(ExpandedMapActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(OpenMapActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(OpenMapActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -205,7 +203,7 @@ public class ExpandedMapActivity extends AppCompatActivity implements
             public View getInfoContents(Marker arg0) {
 
                 // Getting view from the layout file info_window_layout
-                LayoutInflater layoutInflater = ExpandedMapActivity.this.getLayoutInflater();
+                LayoutInflater layoutInflater = OpenMapActivity.this.getLayoutInflater();
                 View info_balloon = layoutInflater.inflate(R.layout.info_window_layout, null);
 
                 // get logo
@@ -242,15 +240,15 @@ public class ExpandedMapActivity extends AppCompatActivity implements
     private void changeBalloonLogo(String logoPath){
         if(logoPath != null) {
             Uri uri = Uri.parse(logoPath);
-            Picasso.with(ExpandedMapActivity.this).load(uri).into(logo_info_balloon);
+            Picasso.with(OpenMapActivity.this).load(uri).into(logo_info_balloon);
         }
     }
 
     private void permissionCheck() {
 
         // location updates: at least 1 meter and 200millsecs change
-        if (ActivityCompat.checkSelfPermission(ExpandedMapActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(ExpandedMapActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(ExpandedMapActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        if (ActivityCompat.checkSelfPermission(OpenMapActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(OpenMapActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(OpenMapActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }
 
     }
@@ -267,7 +265,7 @@ public class ExpandedMapActivity extends AppCompatActivity implements
         markerOptions.position(marker);
         markerOptions.title(nome_fantasia);
         markerOptions.snippet(unidade);
-        BitmapDescriptor markerIcon = BitmapDescriptorFactory.fromResource(R.drawable.marker_green);
+        BitmapDescriptor markerIcon = BitmapDescriptorFactory.fromResource(R.drawable.marker);
         markerOptions.icon(markerIcon);
         Marker mMarker = GMap.addMarker(markerOptions);
         mMarkers.add(mMarker);
@@ -275,7 +273,7 @@ public class ExpandedMapActivity extends AppCompatActivity implements
 
     }
 
-    private List<Filial> mfiliais;
+    private List<Branche> mfiliais;
 
     public void selectMarker() {
 
@@ -283,7 +281,7 @@ public class ExpandedMapActivity extends AppCompatActivity implements
 
         marker.showInfoWindow();
 
-        //trace route usert -> filial
+        //trace route usert -> branche
         Double userLat = mCurrentLocation.getLatitude();
         Double userLong = mCurrentLocation.getLongitude();
 
@@ -363,7 +361,7 @@ public class ExpandedMapActivity extends AppCompatActivity implements
     protected synchronized void buildGoogleApiClient() {
 
         createLocationRequest();
-        mGoogleApiClient = new GoogleApiClient.Builder(ExpandedMapActivity.this)
+        mGoogleApiClient = new GoogleApiClient.Builder(OpenMapActivity.this)
                 .addApi(LocationServices.API)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -386,11 +384,11 @@ public class ExpandedMapActivity extends AppCompatActivity implements
     }
 
     private boolean isGooglePlayServicesAvailable() {
-        int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(ExpandedMapActivity.this);
+        int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(OpenMapActivity.this);
         if (ConnectionResult.SUCCESS == status) {
             return true;
         } else {
-            GooglePlayServicesUtil.getErrorDialog(status, ExpandedMapActivity.this, 0).show();
+            GooglePlayServicesUtil.getErrorDialog(status, OpenMapActivity.this, 0).show();
             return false;
         }
     }
@@ -404,7 +402,7 @@ public class ExpandedMapActivity extends AppCompatActivity implements
     private LocationListener locationListener;
 
     protected void startLocationUpdates() {
-        if (ActivityCompat.checkSelfPermission(ExpandedMapActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(ExpandedMapActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(OpenMapActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(OpenMapActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             return;
         }
@@ -535,7 +533,7 @@ public class ExpandedMapActivity extends AppCompatActivity implements
 
     }
 
-    public void setfiliais(List<Filial> mfiliais) {
+    public void setfiliais(List<Branche> mfiliais) {
         this.mfiliais = mfiliais;
     }
 
