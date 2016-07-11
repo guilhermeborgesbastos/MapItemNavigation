@@ -3,10 +3,6 @@ Recentemente em um dos projetos precisei criar um mapa dinâmico, onde deveria s
 
 No projeto original o POJO ( Filial & Loja ) são populados pela API, para poder compartilhar o código,  criei um  List<Filial> com 3 lojas e 5 filiais.
 
-Baixe agora o código fonte!
-
-![ContactPikerAnimated](https://meucomercioeletronico.com/tutorial/MapItemNavigation.gif) 
-
 
 ## Instalação e uso
 Basta importar o projeto do Git para o seu editor favorito e efetuar a troca do API_KEY.
