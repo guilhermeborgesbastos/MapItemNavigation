@@ -1,7 +1,7 @@
 # Map Item Navigation
-Recentemente em um dos projetos precisei criar um mapa dinâmico, onde deveria ser exibido uma lista com as filiais de lojas que estivessem até 1Km da localização do usuário. Tirei o dia hoje para mover todo o código desenvolvido para um projeto separado, irei compartilhá-lo com você neste artigo. 
+Irei mostrar como criar um mapa dinâmico, onde deveria ser exibido uma lista com lojas que estivessem até 1Km da localização do usuário. Tirei o dia hoje para criar o código desenvolvido para um projeto separado, irei compartilhá-lo com você neste artigo. 
 
-No projeto original o POJO ( Filial & Loja ) são populados pela API, para poder compartilhar o código,  criei um  List<Filial> com 3 lojas e 5 filiais.
+Normalmente o POJO ( Filial & Loja ) são populados pela API, para exemplificar o código,  criei um  List<> com 3 lojas e 5 filiais exemplo.
 
 
 ## Instalação e uso
