@@ -5,9 +5,7 @@ No projeto original o POJO ( Filial & Loja ) são populados pela API, para poder
 
 Baixe agora o código fonte!
 
-| Gif | Video |
-| --- | --- |
-| ![ContactPikerAnimated](https://meucomercioeletronico.com/tutorial/MapItemNavigation.gif)  | [![VIDEO](https://img.youtube.com/vi/rq8Rd_VVBAg/0.jpg)](https://www.youtube.com/watch?v=rq8Rd_VVBAg) |
+![ContactPikerAnimated](https://meucomercioeletronico.com/tutorial/MapItemNavigation.gif) 
 
 
 ## Instalação e uso
