@@ -229,7 +229,7 @@ public class ExpandedMapActivity extends AppCompatActivity implements
                 textEndereco.setText(endereco);
                 textCep.setText("CEP: " + cep);
 
-                textSubtitle.setText("Unidade " + unidade);
+                textSubtitle.setText(unidade);
 
                 // Returning the info_ballooniew containing InfoWindow contents
                 return info_balloon;
